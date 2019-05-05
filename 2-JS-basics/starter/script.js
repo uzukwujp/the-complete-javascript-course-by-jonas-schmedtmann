@@ -74,33 +74,70 @@
 * Operators Precedence
 */
 
-var now = 2018;
-var yearJohn = 1989;
-var fullAge = 18;
+// var now = 2018;
+// var yearJohn = 1989;
+// var fullAge = 18;
 
 
-//Multiple Operators
-var isFullAge = now - yearJohn >= fullAge;
-console.log(isFullAge);
+// //Multiple Operators
+// var isFullAge = now - yearJohn >= fullAge;
+// console.log(isFullAge);
 
-//Grouping
-var ageJohn = now - yearJohn;
-var ageMark = 35;
-var average = (ageJohn + ageMark) / 2;
-console.log(average)
+// //Grouping
+// var ageJohn = now - yearJohn;
+// var ageMark = 35;
+// var average = (ageJohn + ageMark) / 2;
+// console.log(average)
 
-//Multiple assignments
-var x, y;
-x = y = (3 + 5) * 4 - 6;
-console.log(x, y);
+// //Multiple assignments
+// var x, y;
+// x = y = (3 + 5) * 4 - 6;
+// console.log(x, y);
 
-//More Operators
-x *= 2;
-console.log(x);
-x += 10;
-console.log(x);
-x = x + 1;
-x += 1;
-x++;
-console.log(x);
+// //More Operators
+// x *= 2;
+// console.log(x);
+// x += 10;
+// console.log(x);
+// x = x + 1;
+// x += 1;
+// x++;
+// console.log(x);
+
+
+
+/**************************
+* CODING CHALLENGE 1
+*/
+
+var markMass = 90;
+var markHeight = 1.8;
+
+var johnMass = 80;
+var johnHeight = 1.7;
+
+var markBMI = markMass / (markHeight*2);
+console.log("Marks BMI" + markBMI);
+
+var johnBMI = johnMass / (johnHeight*2);
+console.log("Johns BMI" + johnBMI);
+
+var isMarkHigher = markBMI > johnBMI;
+
+console.log("Is Marks BMI higher than Johns - " + isMarkHigher);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
