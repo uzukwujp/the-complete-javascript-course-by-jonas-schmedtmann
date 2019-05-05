@@ -110,24 +110,43 @@
 * CODING CHALLENGE 1
 */
 
-var markMass = 90;
-var markHeight = 1.8;
+// var markMass = 90;
+// var markHeight = 1.8;
 
-var johnMass = 80;
-var johnHeight = 1.7;
+// var johnMass = 80;
+// var johnHeight = 1.7;
 
-var markBMI = markMass / (markHeight*2);
-console.log("Marks BMI" + markBMI);
+// var markBMI = markMass / (markHeight*2);
+// console.log("Marks BMI" + markBMI);
 
-var johnBMI = johnMass / (johnHeight*2);
-console.log("Johns BMI" + johnBMI);
+// var johnBMI = johnMass / (johnHeight*2);
+// console.log("Johns BMI" + johnBMI);
 
-var isMarkHigher = markBMI > johnBMI;
+// var isMarkHigher = markBMI > johnBMI;
 
-console.log("Is Marks BMI higher than Johns - " + isMarkHigher);
+// console.log("Is Marks BMI higher than Johns - " + isMarkHigher);
 
 
+/**************************
+* IF/ELSE 
+*/
 
+var firstName = 'John';
+var civilStatus = 'single';
+
+if (civilStatus === 'married') {
+    console.log(firstName + ' is married');
+} else {
+    console.log(firstName + ' will hopefully marry soon');
+}
+
+var isMarried = true;
+
+if(isMarried){
+    console.log(firstName + ' is married');
+} else {
+    console.log(firstName + ' will hopefully marry soon');
+}
 
 
 
