@@ -173,25 +173,52 @@
 * Ternary operators and switch
 */
 
-var firstName = 'John';
-var age = 17;
+// var firstName = 'John';
+// var age = 17;
 
-age >= 18 ? console.log(firstName + ' can drink beer') :  console.log(firstName + ' can drink juice');
+// age >= 18 ? console.log(firstName + ' can drink beer') :  console.log(firstName + ' can drink juice');
 
-var drink = age >= 18 ? 'Beer' : 'Juice';
-console.log(drink);
+// var drink = age >= 18 ? 'Beer' : 'Juice';
+// console.log(drink);
 
-//Switch
-var job = 'instructor';
+// //Switch
+// var job = 'instructor';
 
-switch(job) {
-    case 'teacher':
-    case 'instructor':
-        console.log(firstName + ' teaches kids how to code')
-        break;
-    case 'driver':
-        console.log(firstName + ' drives an uber in lisbon');
-        break;
-    default:
-        console.log(firstName + ' does something else');
-}  
+// switch(job) {
+//     case 'teacher':
+//     case 'instructor':
+//         console.log(firstName + ' teaches kids how to code')
+//         break;
+//     case 'driver':
+//         console.log(firstName + ' drives an uber in lisbon');
+//         break;
+//     default:
+//         console.log(firstName + ' does something else');
+// }  
+
+
+
+
+/**************************
+* Truthy and Falsy values and equality operators
+*/
+
+// Falsy values: undefinded, null, 0, '', NaN
+// Truthy values: Not falsy values
+
+var height;
+
+height = 23;
+
+if(height || height === 0) {
+    console.log('Variable is defined');
+} else {
+    console.log('Variable is NOT defined');
+}
+
+//Equality Operators
+if (height === 23) {
+    console.log(' === - The data types HAVE TO be the same.')
+} else if (height == '23') {
+    console.log('== - The data types DO NOT have to be the same.')
+}
