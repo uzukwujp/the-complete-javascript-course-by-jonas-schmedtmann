@@ -206,19 +206,63 @@
 // Falsy values: undefinded, null, 0, '', NaN
 // Truthy values: Not falsy values
 
-var height;
+// var height;
 
-height = 23;
+// height = 23;
 
-if(height || height === 0) {
-    console.log('Variable is defined');
-} else {
-    console.log('Variable is NOT defined');
-}
+// if(height || height === 0) {
+//     console.log('Variable is defined');
+// } else {
+//     console.log('Variable is NOT defined');
+// }
 
-//Equality Operators
-if (height === 23) {
-    console.log(' === - The data types HAVE TO be the same.')
-} else if (height == '23') {
-    console.log('== - The data types DO NOT have to be the same.')
+// //Equality Operators
+// if (height === 23) {
+//     console.log(' === - The data types HAVE TO be the same.')
+// } else if (height == '23') {
+//     console.log('== - The data types DO NOT have to be the same.')
+// }
+
+
+
+
+
+/**************************
+* CODING CHALLENGE 2
+*/
+
+var teamJohn = 89 + 120 + 103;
+var teamMike = 116 + 94 + 102;
+var teamMary = 116 + 94 + 102;
+
+console.log('----- Total Scores -----');
+
+console.log('Team John: ' + teamJohn);
+console.log('Team Mike: ' + teamMike);
+console.log('Team Mary: ' + teamMary);
+
+//1. Average scores
+
+var teamJohnAverage = (teamJohn) / 3;
+var teamMikeAverage = (teamMike) / 3;
+var teamMaryAverage = (teamMary) / 3;
+
+console.log('----- Average Scores -----');
+
+console.log('Team John: ' + teamJohnAverage);
+console.log('Team Mike: ' + teamMikeAverage);
+console.log('Team Mary: ' + teamMaryAverage);
+
+
+console.log('----- Winner -----');
+
+
+if((teamJohnAverage > teamMikeAverage) && (teamJohnAverage > teamMaryAverage)){
+    console.log('Johns team wins with an average of: ' + teamJohnAverage);
+} else if((teamMikeAverage > teamJohnAverage) && (teamMikeAverage > teamMaryAverage)) {
+    console.log('Mikes team wins with an average of: ' + teamMikeAverage);
+} else if((teamMaryAverage > teamJohnAverage) && (teamMaryAverage > teamMikeAverage)) {
+    console.log('Marys team wins with an average of: ' + teamMaryAverage);
+} else if((teamMaryAverage === teamJohnAverage) && (teamMaryAverage === teamMikeAverage) && (teamMikeAverage === teamJohnAverage)){
+    console.log('The match has ended in a draw: ' + 'Team Mike ' + teamMikeAverage + ' - Team John ' + teamJohnAverage + ' - Team Mary ' + teamMaryAverage);
 }
