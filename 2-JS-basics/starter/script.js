@@ -424,18 +424,57 @@
 */
 
 
+// var john = {
+//     firstname: 'John',
+//     lastname:  'Smith',
+//     birthyear:  1990,
+//     family: ['Jane' , 'Mark', 'Bob', 'Emily'],
+//     job: 'teacher',
+//     isMarried: false,
+//     calcAge: function() {
+//         this.age = 2018 - this.birthyear;
+//     }
+// };
+
+// john.calcAge();
+// console.log(john);
+
+
+
+
+
+/**************************
+* Objects and Methods
+*/
+
+var mark = {
+    name: 'Mark',
+    mass: 98,
+    height: 1.8,
+    calcBMI: function(){
+        this.bmi = this.mass / (this.height * 2);
+        return this.bmi;
+     }
+};
+
 var john = {
-    firstname: 'John',
-    lastname:  'Smith',
-    birthyear:  1990,
-    family: ['Jane' , 'Mark', 'Bob', 'Emily'],
-    job: 'teacher',
-    isMarried: false,
-    calcAge: function() {
-        this.age = 2018 - this.birthyear;
+    name: 'John',
+    mass: 78,
+    height: 1.8,
+    calcBMI: function(){
+       this.bmi = this.mass / (this.height * 2);
+       return this.bmi;
     }
 };
 
-john.calcAge();
-console.log(john);
+mark.calcBMI();
+john.calcBMI();
+
+if(mark.calcBMI() > john.calcBMI()){
+    console.log(mark.name + ' has a higher BMI of ' + mark.bmi)
+} else if (mark.bmi < john.bmi){
+    console.log(john.name + ' has a higher BMI of ' + john.bmi)
+} else {
+    console.log(john.name + ' and ' + mark.name + ' have the same BMI of ' +john.bmi);
+}
 
