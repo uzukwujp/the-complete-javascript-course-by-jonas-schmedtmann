@@ -332,31 +332,55 @@
 */
 
 // Initialize new array
-var names = ['John', 'Mark', 'Jane']
-var years = new Array(1990, 1969, 1948);
+// var names = ['John', 'Mark', 'Jane']
+// var years = new Array(1990, 1969, 1948);
 
-console.log(names[2]);
-console.log(names.length);
+// console.log(names[2]);
+// console.log(names.length);
 
-// Mutate array data
-names[1] = 'Ben';
-names[names.length] = 'Mary'; //Adds new index to end of array.
-console.log(names);
+// // Mutate array data
+// names[1] = 'Ben';
+// names[names.length] = 'Mary'; //Adds new index to end of array.
+// console.log(names);
 
-//Different Data types
-var john = ['John', 'Smith', 1980, 'teacher', false];
+// //Different Data types
+// var john = ['John', 'Smith', 1980, 'teacher', false];
 
-john.push('blue');  //Adds element to end of array.
-john.unshift('Mr'); //Adds element to start of array.
-console.log(john);
-john.pop();    //Removes last element.
-john.shift();  //Removes first element.
-console.log(john);
-console.log(john.indexOf(1980)); //Returns position of the passed index.
-
-
+// john.push('blue');  //Adds element to end of array.
+// john.unshift('Mr'); //Adds element to start of array.
+// console.log(john);
+// john.pop();    //Removes last element.
+// john.shift();  //Removes first element.
+// console.log(john);
+// console.log(john.indexOf(1980)); //Returns position of the passed index.
 
 
+/**************************
+* Coding Challenge 3
+*/
+
+function tipCalc(bill){
+    var tip;
+    
+    if(bill < 50) {
+        tip = bill * 0.2;
+    } else if ((bill >= 50) && (bill <= 200)){
+        tip = bill * 0.15;
+    } else {
+        tip = bill * 0.10;
+    }
+
+    return tip;
+}
+
+var bills = [124, 48, 286];
+
+var tips = [tipCalc(bills[0]), tipCalc(bills[1]), tipCalc(bills[2])];
+
+var finalValue = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
+
+console.log('Tips: ' + tips);
+console.log('Total ' + finalValue);
 
 
 
