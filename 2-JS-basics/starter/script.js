@@ -447,34 +447,78 @@
 * Objects and Methods
 */
 
-var mark = {
-    name: 'Mark',
-    mass: 98,
-    height: 1.8,
-    calcBMI: function(){
-        this.bmi = this.mass / (this.height * 2);
-        return this.bmi;
-     }
-};
+// var mark = {
+//     name: 'Mark',
+//     mass: 98,
+//     height: 1.8,
+//     calcBMI: function(){
+//         this.bmi = this.mass / (this.height * 2);
+//         return this.bmi;
+//      }
+// };
 
-var john = {
-    name: 'John',
-    mass: 78,
-    height: 1.8,
-    calcBMI: function(){
-       this.bmi = this.mass / (this.height * 2);
-       return this.bmi;
-    }
-};
+// var john = {
+//     name: 'John',
+//     mass: 78,
+//     height: 1.8,
+//     calcBMI: function(){
+//        this.bmi = this.mass / (this.height * 2);
+//        return this.bmi;
+//     }
+// };
 
-mark.calcBMI();
-john.calcBMI();
+// mark.calcBMI();
+// john.calcBMI();
 
-if(mark.calcBMI() > john.calcBMI()){
-    console.log(mark.name + ' has a higher BMI of ' + mark.bmi)
-} else if (mark.bmi < john.bmi){
-    console.log(john.name + ' has a higher BMI of ' + john.bmi)
-} else {
-    console.log(john.name + ' and ' + mark.name + ' have the same BMI of ' +john.bmi);
+// if(mark.calcBMI() > john.calcBMI()){
+//     console.log(mark.name + ' has a higher BMI of ' + mark.bmi)
+// } else if (mark.bmi < john.bmi){
+//     console.log(john.name + ' has a higher BMI of ' + john.bmi)
+// } else {
+//     console.log(john.name + ' and ' + mark.name + ' have the same BMI of ' +john.bmi);
+// }
+
+
+
+
+
+/**************************
+* Iteration
+*/
+
+// for (let i = 1; i < 20; i += 2) {
+//     console.log(i);
+// }
+
+
+// var john = ['John', 'Smith', 1990, 'designer', false];
+
+// for(var i = 0; i < john.length; i++){
+//     console.log(john[i]);
+// }
+
+// var i = 0;
+// while (i < john.length) {
+//     console.log(john[i]);
+//     i++;
+// }
+
+//continue and break statements
+var john = ['John', 'Smith', 1990, 'designer', false];
+
+for(var i = 0; i < john.length; i++){
+    if(typeof john[i] !== 'string') continue;
+    console.log(john[i]);
 }
+
+for(var i = 0; i < john.length; i++){
+    if(typeof john[i] !== 'string') break;
+    console.log(john[i]);
+}
+
+// looping backwards
+for (var i = john.length - 1; i >=0; i--){
+    console.log(john[i]);
+}
+
 
