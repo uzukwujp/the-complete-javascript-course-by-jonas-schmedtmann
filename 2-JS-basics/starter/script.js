@@ -231,38 +231,68 @@
 * CODING CHALLENGE 2
 */
 
-var teamJohn = 89 + 120 + 103;
-var teamMike = 116 + 94 + 102;
-var teamMary = 116 + 94 + 102;
+// var teamJohn = 89 + 120 + 103;
+// var teamMike = 116 + 94 + 102;
+// var teamMary = 116 + 94 + 102;
 
-console.log('----- Total Scores -----');
+// console.log('----- Total Scores -----');
 
-console.log('Team John: ' + teamJohn);
-console.log('Team Mike: ' + teamMike);
-console.log('Team Mary: ' + teamMary);
+// console.log('Team John: ' + teamJohn);
+// console.log('Team Mike: ' + teamMike);
+// console.log('Team Mary: ' + teamMary);
 
-//1. Average scores
+// //1. Average scores
 
-var teamJohnAverage = (teamJohn) / 3;
-var teamMikeAverage = (teamMike) / 3;
-var teamMaryAverage = (teamMary) / 3;
+// var teamJohnAverage = (teamJohn) / 3;
+// var teamMikeAverage = (teamMike) / 3;
+// var teamMaryAverage = (teamMary) / 3;
 
-console.log('----- Average Scores -----');
+// console.log('----- Average Scores -----');
 
-console.log('Team John: ' + teamJohnAverage);
-console.log('Team Mike: ' + teamMikeAverage);
-console.log('Team Mary: ' + teamMaryAverage);
-
-
-console.log('----- Winner -----');
+// console.log('Team John: ' + teamJohnAverage);
+// console.log('Team Mike: ' + teamMikeAverage);
+// console.log('Team Mary: ' + teamMaryAverage);
 
 
-if((teamJohnAverage > teamMikeAverage) && (teamJohnAverage > teamMaryAverage)){
-    console.log('Johns team wins with an average of: ' + teamJohnAverage);
-} else if((teamMikeAverage > teamJohnAverage) && (teamMikeAverage > teamMaryAverage)) {
-    console.log('Mikes team wins with an average of: ' + teamMikeAverage);
-} else if((teamMaryAverage > teamJohnAverage) && (teamMaryAverage > teamMikeAverage)) {
-    console.log('Marys team wins with an average of: ' + teamMaryAverage);
-} else if((teamMaryAverage === teamJohnAverage) && (teamMaryAverage === teamMikeAverage) && (teamMikeAverage === teamJohnAverage)){
-    console.log('The match has ended in a draw: ' + 'Team Mike ' + teamMikeAverage + ' - Team John ' + teamJohnAverage + ' - Team Mary ' + teamMaryAverage);
+// console.log('----- Winner -----');
+
+
+// if((teamJohnAverage > teamMikeAverage) && (teamJohnAverage > teamMaryAverage)){
+//     console.log('Johns team wins with an average of: ' + teamJohnAverage);
+// } else if((teamMikeAverage > teamJohnAverage) && (teamMikeAverage > teamMaryAverage)) {
+//     console.log('Mikes team wins with an average of: ' + teamMikeAverage);
+// } else if((teamMaryAverage > teamJohnAverage) && (teamMaryAverage > teamMikeAverage)) {
+//     console.log('Marys team wins with an average of: ' + teamMaryAverage);
+// } else if((teamMaryAverage === teamJohnAverage) && (teamMaryAverage === teamMikeAverage) && (teamMikeAverage === teamJohnAverage)){
+//     console.log('The match has ended in a draw: ' + 'Team Mike ' + teamMikeAverage + ' - Team John ' + teamJohnAverage + ' - Team Mary ' + teamMaryAverage);
+// }
+
+
+
+
+/**************************
+* Functions
+*/
+
+function calculateAge(birthYear){
+    return 2018 - birthYear;
 }
+
+var ageJohn = calculateAge(1949);
+var ageSteven = calculateAge(1980);
+console.log(ageJohn, ageSteven);
+
+function yearsUntilRetirement(year, firstName) {
+    var age = calculateAge(year);
+    var retirement = 65 - age;
+
+    if (retirement > 0){
+        console.log(firstName + ' retires in ' + retirement + ' years.');
+    } else {
+        console.log(firstName + ' is already retired.');
+    }
+}
+
+yearsUntilRetirement(1990, 'John');
+yearsUntilRetirement(1980, 'Mary');
+yearsUntilRetirement(1950, 'Steven');
