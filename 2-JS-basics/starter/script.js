@@ -504,21 +504,58 @@
 // }
 
 //continue and break statements
-var john = ['John', 'Smith', 1990, 'designer', false];
+// var john = ['John', 'Smith', 1990, 'designer', false];
 
-for(var i = 0; i < john.length; i++){
-    if(typeof john[i] !== 'string') continue;
-    console.log(john[i]);
-}
+// for(var i = 0; i < john.length; i++){
+//     if(typeof john[i] !== 'string') continue;
+//     console.log(john[i]);
+// }
 
-for(var i = 0; i < john.length; i++){
-    if(typeof john[i] !== 'string') break;
-    console.log(john[i]);
-}
+// for(var i = 0; i < john.length; i++){
+//     if(typeof john[i] !== 'string') break;
+//     console.log(john[i]);
+// }
 
-// looping backwards
-for (var i = john.length - 1; i >=0; i--){
-    console.log(john[i]);
-}
+// // looping backwards
+// for (var i = john.length - 1; i >=0; i--){
+//     console.log(john[i]);
+// }
 
 
+
+
+
+/**************************
+* Coding Challange 5
+*/
+
+var bills = {
+    totals: [124, 48, 268, 180, 42],
+    calcTip: function(){
+        var tips = [];
+        var finalBills = [];
+
+        for (let i = 0; i < this.totals.length; i++) {
+            var tip;
+            bill = this.totals[i];
+
+            if(bill < 50) {
+                tip = bill * 0.2;
+            } else if ((bill >= 50) && (bill <= 200)){
+                tip = bill * 0.15;
+            } else {
+                tip = bill * 0.10;
+            }
+
+            tips.push(tip);
+            finalBills.push(tip + bill);
+        }
+
+        console.log('Tips: ' + tips);
+        console.log('Final Bill: ' + finalBills);
+    }
+};
+
+
+
+bills.calcTip();
