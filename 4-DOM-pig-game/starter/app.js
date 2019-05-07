@@ -9,25 +9,31 @@ GAME RULES:
 
 */
 
-var scores, roundScore, activePlayer, dice;
+var scores, roundScore, activePlayer;
 
 scores = [0,0];
 roundScore = 0;
 activePlayer = 1;
 
-// Generate random number between 1 - 6;
-dice = Math.floor(Math.random() * 6) + 1;
-
-// Changes text of current card to dice value.
-// Appends to current player.
-// Text content only set text. Use innerHTML to set html
-
-document.querySelector('#current-' + activePlayer).textContent = dice;
-// document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>';
-
-// Reads Content
-var x = document.querySelector('#score-0').textContent;
-console.log(x);
-
-// Modify CSS.
 document.querySelector('.dice').style.display = 'none';
+
+//Initialize all scores to 0
+document.getElementById('score-0').textContent = '0';
+document.getElementById('score-1').textContent = '0';
+document.getElementById('current-0').textContent = '0';
+document.getElementById('current-1').textContent = '0';
+
+//Generate the dice roll.
+
+document.querySelector('.btn-roll').addEventListener('click', function() {
+    // 1. Generate random number between 1 - 6;
+    var dice = Math.floor(Math.random() * 6) + 1;
+
+    // 2. Display the results
+    var diceDOM = document.querySelector('.dice');
+    diceDOM.style.display = 'block'; //Show the dice
+    diceDOM.src = 'dice-' + dice + '.png'; //Get the dice img that matches the generated random number.
+
+    // 3. Update the round score if the rolled button was NOT a 1
+
+});
