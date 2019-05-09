@@ -48,3 +48,23 @@ console.log(user1);
 console.log(user2);
 
 //Every person object which has access to prototype has a property called age in the ptype.
+
+
+
+// Object.create
+//Creates a new object using an existing object as the prototype of the newly created object.
+
+
+//This object is used as the objects prototype.
+
+const person = {
+    isHuman: false,
+    printIntro: function () {
+        console.log('My name is ${this.name}. Am I human?');
+    }
+}
+
+const me = Object.create(person);
+me.name = "Matthew";
+
+console.log(me);
