@@ -171,26 +171,53 @@ console.log(andre.lastName)*/
 
 
 //Passing functions as arguments.
-var years = [2004, 1965, 1937, 2005, 1998];
+// var years = [2004, 1965, 1937, 2005, 1998];
 
-function arrayCalc(arr, fn) {
-    var arrRes = [];
-    for (let i = 0; i < arr.length; i++) {
-        arrRes.push(fn(arr[i]));
+// function arrayCalc(arr, fn) {
+//     var arrRes = [];
+//     for (let i = 0; i < arr.length; i++) {
+//         arrRes.push(fn(arr[i]));
+//     }
+//     return arrRes;
+// }
+
+// function calculateAge(element) {
+//     return 2018 - element;
+// }
+
+// function isFullAge(element) {
+//     return element >= 18;
+// }
+
+// let ages = arrayCalc(years, calculateAge);
+// let fullAges = arrayCalc(ages, isFullAge);
+
+// console.log(ages);
+// console.log(fullAges);
+
+/*--- Functions returning functions --- */
+
+//Create a generic function
+
+function interviewQuestions(job) {
+    if (job === 'designer') {
+        return function(name) {
+            console.log(name + ' Can you explain what UX design is');
+        }
+    } else if (job === 'teacher') {
+        return function(name) {
+            console.log(name + ' Can you explain what you teach.');
+        }
+    } else {
+        return function(name) {
+            console.log(name + ' What do you do');
+        }
     }
-    return arrRes;
 }
 
-function calculateAge(element) {
-    return 2018 - element;
-}
+//Create a variable to pass jobs into the function
+var designer = interviewQuestions('designer');
+var teacher = interviewQuestions('teacher');
 
-function isFullAge(element) {
-    return element >= 18;
-}
-
-let ages = arrayCalc(years, calculateAge);
-let fullAges = arrayCalc(ages, isFullAge);
-
-console.log(ages);
-console.log(fullAges);
+designer('Andre');
+teacher('Cathal');
