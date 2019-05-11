@@ -54,114 +54,143 @@ console.log(andre.lastName)*/
 // Primitives vs objects
 /* Only numbers, strings, booleans, undefined, and nulls are primitives. Everything else are objects. */
 
-// Primitives
-console.log('----- Primitives -----');
+// // Primitives
+// console.log('----- Primitives -----');
 
-var a = 23;
-var b = a;
+// var a = 23;
+// var b = a;
  
-// Copies a to b. Future mutations to a does not effect value of b.
-// B has it's own copy, it does not reference a.
-a = 46;
+// // Copies a to b. Future mutations to a does not effect value of b.
+// // B has it's own copy, it does not reference a.
+// a = 46;
 
-console.log(a);
-console.log(b);
-
-
-
-// Objects
-console.log('----- Objects -----');
-
-//Variables are referenced, so if original is changed, the copy is also changed.
-
-var obj1 = {
-    name: 'John',
-    age: 26
-}
-var obj2 = obj1;
-obj1.age = 20;
-
-console.log(obj1);
-console.log(obj2);
+// console.log(a);
+// console.log(b);
 
 
 
+// // Objects
+// console.log('----- Objects -----');
 
+// //Variables are referenced, so if original is changed, the copy is also changed.
 
-console.log('----- Functions -----');
+// var obj1 = {
+//     name: 'John',
+//     age: 26
+// }
+// var obj2 = obj1;
+// obj1.age = 20;
 
-// Functions
-var age = 27;
-var obj = {
-    name: 'Jonas',
-    city: 'Lisbon'
-}
-
-function change(a,b){
-    a = 30;
-    b.city = 'San Francisco';
-}
-
-change(age, obj);
-console.log(age);
-console.log(obj.city);
-
-/*
-
-OBJECT
-
-Pass a reference of the Object to a function. 
-When it's changed in the function, it's reflcted outside the function.
-
-PRIMITIVE
-
-When a primitive is passed, a copy of it is passed. 
-Therefore the mutation is refelcted in the function not outside.
-
-*/
+// console.log(obj1);
+// console.log(obj2);
 
 
 
 
 
+// console.log('----- Functions -----');
+
+// // Functions
+// var age = 27;
+// var obj = {
+//     name: 'Jonas',
+//     city: 'Lisbon'
+// }
+
+// function change(a,b){
+//     a = 30;
+//     b.city = 'San Francisco';
+// }
+
+// change(age, obj);
+// console.log(age);
+// console.log(obj.city);
+
+// /*
+
+// OBJECT
+
+// Pass a reference of the Object to a function. 
+// When it's changed in the function, it's reflcted outside the function.
+
+// PRIMITIVE
+
+// When a primitive is passed, a copy of it is passed. 
+// Therefore the mutation is refelcted in the function not outside.
+
+// */
 
 
-console.log('----- PRACTISE -----');
-
-console.log('----- PRIMITIVE -----');
-
-/* PRIMITIVE */
-
-var a = 'Liverpool';
-var b = a;
-
-console.log(a, b);
-
-console.log('----- Objects -----');
-
-/* Objects */
-
-var liverpool = {
-    position: 2,
-    points: 94,
-    goalsFor: 87,
-    goalsAgainst: 22
-}
-
-function updateTable(points, obj){
-    a = 'Derby';
-    obj.points = points;
-    obj.position = 4;
-}
-
-liverpool.position = 1;
 
 
-console.log(liverpool)
 
-updateTable(97, liverpool);
 
-console.log(liverpool)
+
+// console.log('----- PRACTISE -----');
+
+// console.log('----- PRIMITIVE -----');
+
+// /* PRIMITIVE */
+
+// var a = 'Liverpool';
+// var b = a;
+
+// console.log(a, b);
+
+// console.log('----- Objects -----');
+
+// /* Objects */
+
+// var liverpool = {
+//     position: 2,
+//     points: 94,
+//     goalsFor: 87,
+//     goalsAgainst: 22
+// }
+
+// function updateTable(points, obj){
+//     a = 'Derby';
+//     obj.points = points;
+//     obj.position = 4;
+// }
+
+// liverpool.position = 1;
+
+
+// console.log(liverpool)
+
+// updateTable(97, liverpool);
+
+// console.log(liverpool)
 
 //PRIMITIVE = Copied. Changes are not maintain in copeies.
 //Objects are referenced. Changes are changed everywhere.
+
+
+
+
+
+//Passing functions as arguments.
+var years = [2004, 1965, 1937, 2005, 1998];
+
+function arrayCalc(arr, fn) {
+    var arrRes = [];
+    for (let i = 0; i < arr.length; i++) {
+        arrRes.push(fn(arr[i]));
+    }
+    return arrRes;
+}
+
+function calculateAge(element) {
+    return 2018 - element;
+}
+
+function isFullAge(element) {
+    return element >= 18;
+}
+
+let ages = arrayCalc(years, calculateAge);
+let fullAges = arrayCalc(ages, isFullAge);
+
+console.log(ages);
+console.log(fullAges);
