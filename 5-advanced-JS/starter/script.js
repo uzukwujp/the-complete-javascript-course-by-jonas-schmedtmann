@@ -197,27 +197,38 @@ console.log(andre.lastName)*/
 
 /*--- Functions returning functions --- */
 
-//Create a generic function
+// //Create a generic function
 
-function interviewQuestions(job) {
-    if (job === 'designer') {
-        return function(name) {
-            console.log(name + ' Can you explain what UX design is');
-        }
-    } else if (job === 'teacher') {
-        return function(name) {
-            console.log(name + ' Can you explain what you teach.');
-        }
-    } else {
-        return function(name) {
-            console.log(name + ' What do you do');
-        }
-    }
-}
+// function interviewQuestions(job) {
+//     if (job === 'designer') {
+//         return function(name) {
+//             console.log(name + ' Can you explain what UX design is');
+//         }
+//     } else if (job === 'teacher') {
+//         return function(name) {
+//             console.log(name + ' Can you explain what you teach.');
+//         }
+//     } else {
+//         return function(name) {
+//             console.log(name + ' What do you do');
+//         }
+//     }
+// }
 
-//Create a variable to pass jobs into the function
-var designer = interviewQuestions('designer');
-var teacher = interviewQuestions('teacher');
+// //Create a variable to pass jobs into the function
+// var designer = interviewQuestions('designer');
+// var teacher = interviewQuestions('teacher');
 
-designer('Andre');
-teacher('Cathal');
+// designer('Andre');
+// teacher('Cathal');
+
+/*--- Immediately Invoked Function Expressions --- */
+(function () {
+    var score = Math.random() * 10;
+    console.log(score >= 5);
+})();
+
+(function (scoreDeduction) {
+    var score = Math.random() * 10;
+    console.log(score - scoreDeduction >= 5);
+})(-2);
