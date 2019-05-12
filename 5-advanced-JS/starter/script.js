@@ -378,36 +378,38 @@ c) correct answer (I would use a number for this)
 
 
 //Create Questions
-function Question(question, answers, correctAnswer){
-    this.question = question;
-    this.answers = answers;
-    this.correctAnswer = correctAnswer;
-}
-
-Question.prototype.displayQuestion = function() {
-    console.log(this.question);
-
-    this.answers.forEach(answer => {
-        console.log(answer);
-    });
-}
-
-Question.prototype.checkAnswer = function(answer) {
-    if (answer == this.correctAnswer){
-        console.log('Correct Answer')
-    } else {
-        console.log('Wrong! Try again');
+(function() {
+    function Question(question, answers, correctAnswer){
+        this.question = question;
+        this.answers = answers;
+        this.correctAnswer = correctAnswer;
     }
-}
 
-var question1 = new Question('Where are Liverpool in the league?', ['1st', '2nd', '3rd'], 1);
-var question2 = new Question('Which player didn\'t win the golden boot?', ['Salah', 'Mane', 'Aguero'], 2);
-var question3 = new Question('Which player won the golden glove?', ['Allison ', 'Ederson ', 'De Gea 🤣'], 0);
+    Question.prototype.displayQuestion = function() {
+        console.log(this.question);
 
-var questions = [question1, question2, question3];
+        this.answers.forEach(answer => {
+            console.log(answer);
+        });
+    }
 
-n = Math.floor(Math.random() * questions.length);
-questions[n].displayQuestion();
+    Question.prototype.checkAnswer = function(answer) {
+        if (answer == this.correctAnswer){
+            console.log('Correct Answer')
+        } else {
+            console.log('Wrong! Try again');
+        }
+    }
 
-var answer = parseInt(prompt('Please select the correct answer.'));
-questions[n].checkAnswer(answer);
+    var question1 = new Question('Where are Liverpool in the league?', ['1st', '2nd', '3rd'], 1);
+    var question2 = new Question('Which player didn\'t win the golden boot?', ['Salah', 'Mane', 'Aguero'], 2);
+    var question3 = new Question('Which player won the golden glove?', ['Allison ', 'Ederson ', 'De Gea 🤣'], 0);
+
+    var questions = [question1, question2, question3];
+
+    n = Math.floor(Math.random() * questions.length);
+    questions[n].displayQuestion();
+
+    var answer = parseInt(prompt('Please select the correct answer.'));
+    questions[n].checkAnswer(answer);
+})();
