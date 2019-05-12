@@ -380,8 +380,6 @@ c) correct answer (I would use a number for this)
 //Create Questions
 (function() {
 
-    var points = 0;
-
     function Question(question, answers, correctAnswer){
         this.question = question;
         this.answers = answers;
@@ -396,19 +394,25 @@ c) correct answer (I would use a number for this)
         });
     }
 
-    Question.prototype.checkAnswer = function(answer) {
-        if (answer == 'exit'){
-            console.log('Game Over');
+    Question.prototype.checkAnswer = function(answer, callback) {
+        var score;
+
+        if (answer == this.correctAnswer){
+            console.log('Correct Answer')
+            score = callback(true);
         } else {
-            if (answer == this.correctAnswer){
-                console.log('Correct Answer')
-                points++;
-                startQuiz();
-            } else {
-                console.log('Wrong! Try again');
-                console.log('You finished wihh ' + points + ' points!');
-            }
+            console.log('Wrong! Try again');
+            console.log('You finished wihh ' + points + ' points!');
+            score = callback(false);
         }
+
+        this.displayScore(score);
+    }
+
+
+    Question.prototype.displayScore = function(score) {
+        console.log('Your current score is ' + score);
+        console.log('---------------------------');
     }
 
     var question1 = new Question('Where are Liverpool in the league?', ['1st', '2nd', '3rd'], 1);
@@ -417,12 +421,32 @@ c) correct answer (I would use a number for this)
 
     var questions = [question1, question2, question3];
 
+    //Closure to keep score instead of global variable increments.
+
+    function score() {
+        var score = 0;
+
+        return function(correct) {
+            if(correct) {
+                score ++;
+            }
+
+            return score;
+        }
+    }
+
+    var keepScore = score();
+
     function startQuiz() {
         n = Math.floor(Math.random() * questions.length);
         questions[n].displayQuestion();
     
         var answer = prompt('Please select the correct answer.');
-        questions[n].checkAnswer(answer);
+
+        if(answer !== 'exit'){
+            questions[n].checkAnswer(parseInt(answer), keepScore);
+            startQuiz();
+        }
     }
 
     startQuiz();
