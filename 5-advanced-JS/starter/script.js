@@ -379,6 +379,9 @@ c) correct answer (I would use a number for this)
 
 //Create Questions
 (function() {
+
+    var points = 0;
+
     function Question(question, answers, correctAnswer){
         this.question = question;
         this.answers = answers;
@@ -394,10 +397,17 @@ c) correct answer (I would use a number for this)
     }
 
     Question.prototype.checkAnswer = function(answer) {
-        if (answer == this.correctAnswer){
-            console.log('Correct Answer')
+        if (answer == 'exit'){
+            console.log('Game Over');
         } else {
-            console.log('Wrong! Try again');
+            if (answer == this.correctAnswer){
+                console.log('Correct Answer')
+                points++;
+                startQuiz();
+            } else {
+                console.log('Wrong! Try again');
+                console.log('You finished wihh ' + points + ' points!');
+            }
         }
     }
 
@@ -407,9 +417,14 @@ c) correct answer (I would use a number for this)
 
     var questions = [question1, question2, question3];
 
-    n = Math.floor(Math.random() * questions.length);
-    questions[n].displayQuestion();
+    function startQuiz() {
+        n = Math.floor(Math.random() * questions.length);
+        questions[n].displayQuestion();
+    
+        var answer = prompt('Please select the correct answer.');
+        questions[n].checkAnswer(answer);
+    }
 
-    var answer = parseInt(prompt('Please select the correct answer.'));
-    questions[n].checkAnswer(answer);
+    startQuiz();
+    
 })();
