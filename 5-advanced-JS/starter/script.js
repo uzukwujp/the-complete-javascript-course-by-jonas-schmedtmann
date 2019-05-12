@@ -238,35 +238,97 @@ console.log(andre.lastName)*/
 /*--- Closures --- */
 
 //Code camp example
-var c = 3;
+// var c = 3;
 
-function outer() {
-    var b = 10;
+// function outer() {
+//     var b = 10;
 
-    function inner() {
-        var a = 5;
-        console.log(a+b+c);
-    }
+//     function inner() {
+//         var a = 5;
+//         console.log(a+b+c);
+//     }
 
-    return inner;
-}
+//     return inner;
+// }
 
-var x = outer();
-var y = outer(); 
+// var x = outer();
+// var y = outer(); 
 
-x();
-y();
+// x();
+// y();
 
-function interviewQuestions(job) {
-    return function(name) {
-        if (job === 'designer') {
-            console.log(name + ' ' +  job);
-        } else if(job === 'teacher') {
-            console.log(name + ' ' + job);
-        } else {
-            console.log(name + ' You don\'t have a job');
+// function interviewQuestions(job) {
+//     return function(name) {
+//         if (job === 'designer') {
+//             console.log(name + ' ' +  job);
+//         } else if(job === 'teacher') {
+//             console.log(name + ' ' + job);
+//         } else {
+//             console.log(name + ' You don\'t have a job');
+//         }
+//     }
+// }
+
+// interviewQuestions('teacher')('john');
+
+/*--- Bind, Call * Apply --- */
+
+var john = {
+    name: 'John',
+    age: 26,
+    job: 'teacher',
+    presentation: function(style, timeOfDay) {
+        if (style === 'formal') {
+            console.log('Good ' + timeOfDay + ', Ladies and gentlemen! I\'m ' +  this.name + ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old.');
+        } else if (style === 'friendly') {
+            console.log('Hey! What\'s up? I\'m ' +  this.name + ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old. Have a nice ' + timeOfDay + '.');
         }
     }
+};
+var emily = {
+    name: 'Emily',
+    age: 35,
+    job: 'designer'
+};
+
+john.presentation('formal', 'morning');
+john.presentation.call(emily, 'formal', 'morning');
+
+
+
+var john = {
+    name: 'John',
+	salary: 30000,
+  	bonus: 5000,
+  	total: function(){
+    	console.log(this.name + ' made ' + (this.salary + this.bonus));
+    }
 }
 
-interviewQuestions('teacher')('john');
+var emily = {
+    name: 'Emily',
+	salary: 30000,
+  	bonus: 5500,
+}
+
+john.total(); //John made 35000
+john.total.call(emily); //Emily made 35500
+
+var person = {
+    fullName: function() {
+        console.log(this.firstName + " " + this.lastName);
+    }
+  }
+  var person1 = {
+    firstName: "Jack",
+    lastName: "Smith"
+  }
+  
+person.fullName.apply(person1);  // Will return "Jack Smith"
+
+//bind
+var johnFriendly = john.presentation.bind(john, 'friendly');
+johnFriendly('morning');
+johnFriendly('night');
+var emilyFormal = john.presentation.bind(emily, 'formal');
+emilyFormal('afternoon');
