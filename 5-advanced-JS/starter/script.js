@@ -223,12 +223,50 @@ console.log(andre.lastName)*/
 // teacher('Cathal');
 
 /*--- Immediately Invoked Function Expressions --- */
-(function () {
-    var score = Math.random() * 10;
-    console.log(score >= 5);
-})();
+// (function () {
+//     var score = Math.random() * 10;
+//     console.log(score >= 5);
+// })();
 
-(function (scoreDeduction) {
-    var score = Math.random() * 10;
-    console.log(score - scoreDeduction >= 5);
-})(-2);
+// (function (scoreDeduction) {
+//     var score = Math.random() * 10;
+//     console.log(score - scoreDeduction >= 5);
+// })(-2);
+
+
+
+/*--- Closures --- */
+
+//Code camp example
+var c = 3;
+
+function outer() {
+    var b = 10;
+
+    function inner() {
+        var a = 5;
+        console.log(a+b+c);
+    }
+
+    return inner;
+}
+
+var x = outer();
+var y = outer(); 
+
+x();
+y();
+
+function interviewQuestions(job) {
+    return function(name) {
+        if (job === 'designer') {
+            console.log(name + ' ' +  job);
+        } else if(job === 'teacher') {
+            console.log(name + ' ' + job);
+        } else {
+            console.log(name + ' You don\'t have a job');
+        }
+    }
+}
+
+interviewQuestions('teacher')('john');
