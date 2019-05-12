@@ -377,8 +377,6 @@ c) correct answer (I would use a number for this)
 */
 
 
-let questionAsked;
-
 //Create Questions
 function Question(question, answers, correctAnswer){
     this.question = question;
@@ -386,32 +384,30 @@ function Question(question, answers, correctAnswer){
     this.correctAnswer = correctAnswer;
 }
 
+Question.prototype.displayQuestion = function() {
+    console.log(this.question);
+
+    this.answers.forEach(answer => {
+        console.log(answer);
+    });
+}
+
+Question.prototype.checkAnswer = function(answer) {
+    if (answer == this.correctAnswer){
+        console.log('Correct Answer')
+    } else {
+        console.log('Wrong! Try again');
+    }
+}
+
 var question1 = new Question('Where are Liverpool in the league?', ['1st', '2nd', '3rd'], 1);
 var question2 = new Question('Which player didn\'t win the golden boot?', ['Salah', 'Mane', 'Aguero'], 2);
 var question3 = new Question('Which player won the golden glove?', ['Allison ', 'Ederson ', 'De Gea 🤣'], 0);
 
-var questionsArr = [];
-questionsArr.push(question1, question2, question3);
+var questions = [question1, question2, question3];
 
-//Select Random question
-function selectRandomQuestion(){
-    selectedQuestionNumber = Math.floor(Math.random() * questionsArr.length);
-    var selectedQuestion = questionsArr[selectedQuestionNumber];
-    questionAsked = selectedQuestion;
-    console.log('Question: ' + selectedQuestion['question']);
-    console.log('Possible Answers: ' + selectedQuestion['answers']);
-}
+n = Math.floor(Math.random() * questions.length);
+questions[n].displayQuestion();
 
-selectRandomQuestion();
-
-//Prompt for answer
-var userAnswer = prompt('Enter the number of the correct answer (0 - 2)');
-function checkAnswer(){
-    if(userAnswer == questionAsked['correctAnswer']){
-        console.log('Correct! ' + questionAsked['answers'][questionAsked['correctAnswer']]);
-    } else {
-        console.log('Wrong');
-    }
-}
-
-checkAnswer();
+var answer = parseInt(prompt('Please select the correct answer.'));
+questions[n].checkAnswer(answer);
