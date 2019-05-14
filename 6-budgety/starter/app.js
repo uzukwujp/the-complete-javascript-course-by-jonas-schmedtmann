@@ -90,6 +90,23 @@ var UIController = (function() {
             }
         },
         
+        clearFields: function() {
+            var fields, fieldsArr;
+
+            fields = document.querySelectorAll(DomStrings.inputDescription + ', ' + DomStrings.inputValue);
+
+            //Turns above list into array.
+
+            fieldsArr = Array.prototype.slice.call(fields);
+            
+            fieldsArr.forEach(function(current, index, array)  {
+                current.value = "";
+                current.description = "";
+            });
+
+            fieldsArr[0].focus();
+        },
+
         getDomStrings: function(){
             return DomStrings;
         },
@@ -105,7 +122,7 @@ var UIController = (function() {
             } else if (type === 'exp') {
                 element = DomStrings.expenseContainer;
 
-                html = '<div class="item clearfix" id="income-%id%><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">10%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
+                html = '<div class="item clearfix" id="exp-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
             }
 
             // Replace the placeholder text with some actual data
@@ -151,9 +168,12 @@ var controller = (function(budgetCtrl, UICtrl) {
         // 3. Add the item to the UI
         UICtrl.addListItem(newItem, input.type);
 
-        // 4. Calculate the budger
+        //4. Clear the fields
+        UICtrl.clearFields();
+        
+        // 5. Calculate the budger
 
-        // 5. Display the budget on the UI 
+        // 6. Display the budget on the UI 
         console.log('It works');
     }
 
