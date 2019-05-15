@@ -26,7 +26,7 @@ var budgetController = (function() {
     Expense.prototype.calcPercentage = function(totalIncome) {
 
         if (totalIncome > 0) {
-            this.percentage = (this.value / totalIncome) * 100;
+            this.percentage = Math.round((this.value / totalIncome) * 100);
         } else {
             this.percentage = -1;
         }
@@ -166,7 +166,10 @@ var UIController = (function() {
         incomeLabel: '.budget__income--value',
         expensesLabel: '.budget__expenses--value',
         percentageLabel: '.budget__expenses--percentage',
-        container: '.container'
+        container: '.container',
+        expensesPercLabel: '.item__percentage'
+
+
     };
 
     return {
@@ -211,6 +214,27 @@ var UIController = (function() {
             }
         },
 
+        displayPercentages: function(percentages) {
+
+            var fields = document.querySelectorAll(DomStrings.expensesPercLabel);
+
+
+            var nodeListForEach = function(list, callback) {
+                for (let i = 0; i < list.length; i++) {
+                    callback(list[i], i);
+                }
+            };
+
+            nodeListForEach(fields, function(current, index) {
+
+                if (percentages[index] > 0) {
+                    current.textContent = percentages[index] + '%';
+                } else {
+                    current.textContent = '---';
+                }
+            });
+        },
+
         getDomStrings: function(){
             return DomStrings;
         },
@@ -222,7 +246,7 @@ var UIController = (function() {
             if (type === 'inc') {
                 element = DomStrings.incomeContainer;
 
-                html = '<div class="item clearfix" id="inc-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>'
+                html = '<div class="item clearfix" id="inc-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>'
             } else if (type === 'exp') {
                 element = DomStrings.expenseContainer;
 
@@ -284,7 +308,7 @@ var controller = (function(budgetCtrl, UICtrl) {
         var percentages = budgetCtrl.getPercentages();
 
         // 3. Update the UI
-        console.log(percentages);
+        UICtrl.displayPercentages(percentages);
     }
 
     var ctrlAddItem = function() {
