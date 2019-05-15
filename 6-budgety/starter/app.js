@@ -168,9 +168,27 @@ var UIController = (function() {
         percentageLabel: '.budget__expenses--percentage',
         container: '.container',
         expensesPercLabel: '.item__percentage'
-
-
     };
+
+    var formatNumber = function(num, type) {
+            
+        var numSplit, int, dec, type;
+
+        num = Math.abs(num);
+        num = num.toFixed(2); //Rounds and converts to decimal.
+
+        numSplit = num.split('.');
+
+        int = numSplit[0];
+        if (int.length > 3) {
+            int.substr(0, int.length - 3) + ',' + int.substr(int.length - 3, 3);
+        }
+
+        dec = numSplit[1];
+
+        return (type === 'exp' ? '-' : '=') + ' ' + int + '.' + dec;
+    };
+
 
     return {
         getInput: function() {
@@ -200,11 +218,12 @@ var UIController = (function() {
         },
 
         displayBudget: function(obj) {
-
-            document.querySelector(DomStrings.budgetLabel).textContent = obj.budget;
-            document.querySelector(DomStrings.incomeLabel).textContent = obj.totalInc;
-            document.querySelector(DomStrings.expensesLabel).textContent = obj.totalExp;
-            document.querySelector(DomStrings.percentageLabel).textContent = obj.percentage;
+            var type;
+            obj.budget > 0 ? type = 'inc' : type = 'exp';
+            
+            document.querySelector(DomStrings.budgetLabel).textContent = formatNumber(obj.budget, type);
+            document.querySelector(DomStrings.incomeLabel).textContent = formatNumber(obj.totalInc, 'inc');
+            document.querySelector(DomStrings.expensesLabel).textContent = formatNumber(obj.totalExp, 'exp');
 
             if(obj.percentage > 0) {
                 document.querySelector(DomStrings.percentageLabel).textContent = obj.percentage + '%';
@@ -256,7 +275,7 @@ var UIController = (function() {
             // Replace the placeholder text with some actual data
             newHtml = html.replace('%id%', obj.id);
             newHtml = newHtml.replace('%description%', obj.description);
-            newHtml = newHtml.replace('%value%', obj.value);
+            newHtml = newHtml.replace('%value%', formatNumber(obj.value));
 
             // Insert the HTML into the DOM
             document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
