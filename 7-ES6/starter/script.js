@@ -85,33 +85,66 @@
 
 // Lecture: Strings
 
-let firstName = 'John';
-let lastName = 'Smith';
-const yearOfBirth = 1990;
+// let firstName = 'John';
+// let lastName = 'Smith';
+// const yearOfBirth = 1990;
 
-function calcAge(year) {
-    return 2019 - year;
-}
+// function calcAge(year) {
+//     return 2019 - year;
+// }
 
-// Template Literals
+// // Template Literals
+
+// // ES5
+// console.log('This is ' + firstName + ' ' + lastName + 
+// '. He was born in ' + yearOfBirth + '. Today he is ' + 
+// calcAge(yearOfBirth) + ' years old.');
+
+// // ES6
+// console.log(`This is ${firstName} ${lastName}. He was born in ${yearOfBirth}. Today he is ${calcAge(yearOfBirth)} years old.`);
+
+// // String Methods
+
+// const name = `${firstName} ${lastName}`;
+
+// console.log(name.startsWith('J'));
+// console.log(name.endsWith('h'));
+// console.log(name.includes(' '));
+// console.log(firstName.repeat(5));
+
+
+
+
+
+
+
+// Lecture: Arrow Functions
+const years = [1990, 1965, 1982, 1937];
 
 // ES5
-console.log('This is ' + firstName + ' ' + lastName + 
-'. He was born in ' + yearOfBirth + '. Today he is ' + 
-calcAge(yearOfBirth) + ' years old.');
+var ages5 = years.map(function(el) {
+    return 2016 - el;
+});
+
+console.log(ages5);
 
 // ES6
-console.log(`This is ${firstName} ${lastName}. He was born in ${yearOfBirth}. Today he is ${calcAge(yearOfBirth)} years old.`);
+let ages6 = years.map(el => 2016 - el);
+console.log(ages6);
 
-// String Methods
+// With multiple arguments you must wrap them in parentheses.
 
-const name = `${firstName} ${lastName}`;
+ages6 = years.map((el, index) => `Age element ${index +1}: ${2016 - el}.`);
+console.log(ages6);
 
-console.log(name.startsWith('J'));
-console.log(name.endsWith('h'));
-console.log(name.includes(' '));
-console.log(firstName.repeat(5));
+// To write code across multiple lines you must use curly braces and return keyword
 
+ages6 = years.map((el, index) => {
+    const now = new Date().getFullYear();
+    const age = now - el;
+    return `Age element ${index + 1}: ${age}`;
+});
 
+console.log(ages6);
 
 
