@@ -119,32 +119,114 @@
 
 
 // Lecture: Arrow Functions
-const years = [1990, 1965, 1982, 1937];
+// const years = [1990, 1965, 1982, 1937];
 
-// ES5
-var ages5 = years.map(function(el) {
-    return 2016 - el;
-});
+// // ES5
+// var ages5 = years.map(function(el) {
+//     return 2016 - el;
+// });
 
-console.log(ages5);
+// console.log(ages5);
+
+// // ES6
+// let ages6 = years.map(el => 2016 - el);
+// console.log(ages6);
+
+// // With multiple arguments you must wrap them in parentheses.
+
+// ages6 = years.map((el, index) => `Age element ${index +1}: ${2016 - el}.`);
+// console.log(ages6);
+
+// // To write code across multiple lines you must use curly braces and return keyword
+
+// ages6 = years.map((el, index) => {
+//     const now = new Date().getFullYear();
+//     const age = now - el;
+//     return `Age element ${index + 1}: ${age}`;
+// });
+
+// console.log(ages6);
+
+// Lecture: This keyword in arrow functions
+
+// var box5 = {
+//     color: 'green',
+//     position: 1,
+//     clickMe: function() {
+//         var self = this;
+
+//         document.querySelector('.green').addEventListener('click', function() {
+//             var str = 'This is the box number ' + self.position + ' and it is ' +self.color;
+//             alert(str);
+//         });
+//     }
+// }
+
+// box5.clickMe();
 
 // ES6
-let ages6 = years.map(el => 2016 - el);
-console.log(ages6);
 
-// With multiple arguments you must wrap them in parentheses.
+// const box6 = {
+//     color: 'green',
+//     position: 1,
+//     clickMe: function() {
 
-ages6 = years.map((el, index) => `Age element ${index +1}: ${2016 - el}.`);
-console.log(ages6);
+//         document.querySelector('.green').
+//             addEventListener('click', () => {
+//             let str = `This is the box number ${this.position} and this is it's color ${this.color}`;
+//             alert(str);
+//         });
+//     }
+// }
 
-// To write code across multiple lines you must use curly braces and return keyword
+// box6.clickMe();
 
-ages6 = years.map((el, index) => {
-    const now = new Date().getFullYear();
-    const age = now - el;
-    return `Age element ${index + 1}: ${age}`;
-});
+// const box62 = {
+//     color: 'green',
+//     position: 1,
+//     clickMe: function() {
 
-console.log(ages6);
+//         document.querySelector('.green').
+//             addEventListener('click', () => {
+//             let str = `This is the box number ${this.position} and this is it's color ${this.color}`;
+//             alert(str);
+//         });
+//     }
+// }
 
+// box6.clickMe();
+
+// This in functional constrcutors
+
+function Person(name) {
+    this.name = name;
+}
+
+// ES5
+// Person.prototype.myFriends5 = function(friends) {
+//     var arr = friends.map(function(el)
+//     {
+//         return this.name + ' is friends with ' + el
+//     }.bind(this));
+
+//     console.log(arr);
+// }
+
+// var friends = ['Rob', 'Jane', 'Mark'];
+
+// new Person('John').myFriends5(friends);
+
+// ES6
+Person.prototype.myFriends6 = function(friends) {
+    let arr = friends.map(el =>
+    {
+        return `${this.name} is friends with  ${el}`;
+    });
+
+    console.log(arr);
+}
+
+var friends = ['Rob', 'Jane', 'Mark'];
+
+new Person('John').myFriends6(friends);
 
