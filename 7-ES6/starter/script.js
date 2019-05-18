@@ -56,23 +56,58 @@
 
 
 
-// Lecture: Blocks and IIFEs
+// // Lecture: Blocks and IIFEs
 
-// ES6
+// // ES6
 
-{
-    const a = 1;
-    let b = 2;
+// {
+//     const a = 1;
+//     let b = 2;
+// }
+
+// console.log(a + b); //Fails. Variables can't be acessed out of the block.
+
+// //ES5
+
+// (function() {
+//     var c = 3;
+// })();
+
+// console.log(c);
+
+
+
+
+
+
+
+
+
+// Lecture: Strings
+
+let firstName = 'John';
+let lastName = 'Smith';
+const yearOfBirth = 1990;
+
+function calcAge(year) {
+    return 2019 - year;
 }
 
-console.log(a + b); //Fails. Variables can't be acessed out of the block.
+// Template Literals
 
-//ES5
+// ES5
+console.log('This is ' + firstName + ' ' + lastName + 
+'. He was born in ' + yearOfBirth + '. Today he is ' + 
+calcAge(yearOfBirth) + ' years old.');
 
-(function() {
-    var c = 3;
-})();
+// ES6
+console.log(`This is ${firstName} ${lastName}. He was born in ${yearOfBirth}. Today he is ${calcAge(yearOfBirth)} years old.`);
 
-console.log(c);
+// String Methods
 
+const name = `${firstName} ${lastName}`;
 
+console.log(name.startsWith('J'));
+console.log(name.endsWith('h'));
+console.log(name.includes(' '));
+console.log(firstName.repeat(5));
