@@ -234,38 +234,99 @@
 
 // Lecture: Destructuring
 
+// // ES5
+// var john = ['John', 26];
+// // var name = john[0];
+// // var age = john[1];
+
+// // ES6
+// const [name, age] = ['John', 26];
+// console.log(name);
+// console.log(age);
+
+// const obj = {
+//     firstName: 'John',
+//     lastName: 'Smith'
+// };
+
+// const {firstName, lastName} = obj;
+// console.log(firstName);
+// console.log(lastName);
+
+// // If you don't want variable names to match property names.
+// const {firstName: a, lastName: b} = obj;
+// console.log(a);
+// console.log(b);
+
+// // Practical example
+
+// function calcRetirementAge(year) {
+//     const age = new Date().getFullYear() - year;
+//     return [age, 65 - age];
+// }
+
+// const [age2, retirement] = 
+// calcRetirementAge(1990);
+// console.log(age2);
+// console.log(retirement);
+
+
+
+
+//Lecture: Arrays
+
+const boxes = document.querySelectorAll('.box'); // Returns node list
+
 // ES5
-var john = ['John', 26];
-// var name = john[0];
-// var age = john[1];
+
+var boxesArr5 = Array.prototype.slice.call(boxes);
+// boxesArr5.forEach(function(cur) {
+//     cur.style.backgroundColor = 'dodgerblue';
+// });
 
 // ES6
-const [name, age] = ['John', 26];
-console.log(name);
-console.log(age);
+// Convert above node list into an array
 
-const obj = {
-    firstName: 'John',
-    lastName: 'Smith'
-};
+let boxesArr6 = Array.from(boxes); 
+boxesArr6.forEach(cur => 
+    cur.style.backgroundColor = 'dodgerblue');
 
-const {firstName, lastName} = obj;
-console.log(firstName);
-console.log(lastName);
 
-// If you don't want variable names to match property names.
-const {firstName: a, lastName: b} = obj;
-console.log(a);
-console.log(b);
+// ES5
+// for (var i = 0; i < boxesArr5.length; i++) {
+    
+//     if(boxesArr5[i].className === 'box blue') {
+//         continue;
+//     }
 
-// Practical example
+//     boxesArr5[i].textContent = 'I changed to blue';
+// }
 
-function calcRetirementAge(year) {
-    const age = new Date().getFullYear() - year;
-    return [age, 65 - age];
+
+
+// ES6
+for (const cur of boxesArr6) {
+    if(cur.className.includes('blue')) {
+        continue;
+    }
+
+    cur.textContent = 'I changed to Dodger Blue';
 }
 
-const [age2, retirement] = 
-calcRetirementAge(1990);
-console.log(age2);
-console.log(retirement);
+
+
+// ES5
+var ages = [12, 17, 8, 21, 14, 11];
+
+var full = ages.map(function(cur) {
+    return cur >= 18;
+});
+
+console.log(full);
+console.log(full.indexOf(true));
+console.log(ages[full.indexOf(true)]);
+
+// ES6
+
+console.log(ages.findIndex(cur => cur >= 18)); //Index of true;
+console.log(ages.find(cur => cur >= 18)); //Age that is true;
