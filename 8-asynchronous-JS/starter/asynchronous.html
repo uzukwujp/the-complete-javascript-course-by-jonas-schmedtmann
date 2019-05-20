@@ -33,61 +33,82 @@
 
         // Promises
 
-        const getIDs = new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve([523, 875, 432, 974]);
-            }, 1500);
-        });
+        // const getIDs = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         resolve([523, 875, 432, 974]);
+        //     }, 1500);
+        // });
 
-        const getRecipe = recID => {
-            return new Promise((resolve, reject) => {
-                setTimeout(ID => {
-                    const recipe = {title: 'Fresh Tomato Pasta', publisher: 'Jonas'}
-                    resolve(`${ID}: ${recipe.title}`);
-                }, 1500, recID)
-            });
-        };
-
-        const getRelated = publisher => {
-            return new Promise((resolve, reject) => {
-                setTimeout(pub => {
-                    const recipe = {title: 'Italian Pizza', publisher: 'Jonas'}
-                    resolve(`${pub}: ${recipe.title}`);
-                }, 1500, publisher)
-            });
-        };
-
-        // getIDs
-        //     .then(IDs => {
-        //         console.log(IDs);
-        //         return getRecipe(IDs[2]);
-        //     })
-        //     .then(recipe => {
-        //         console.log(recipe);
-        //         return getRelated('Jonas');
-        //     })
-        //     .then(recipe => {
-        //         console.log(recipe);
-        //     })
-        //     .catch(error => {
-        //         console.log(error);
+        // const getRecipe = recID => {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(ID => {
+        //             const recipe = {title: 'Fresh Tomato Pasta', publisher: 'Jonas'}
+        //             resolve(`${ID}: ${recipe.title}`);
+        //         }, 1500, recID)
         //     });
+        // };
 
-        async function getRecipiesAW() 
-        {
-            const IDs = await getIDs;
-            console.log(IDs);
+        // const getRelated = publisher => {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(pub => {
+        //             const recipe = {title: 'Italian Pizza', publisher: 'Jonas'}
+        //             resolve(`${pub}: ${recipe.title}`);
+        //         }, 1500, publisher)
+        //     });
+        // };
 
-            const recipe = await getRecipe(IDs[2]);
-            console.log(recipe);
+        // // getIDs
+        // //     .then(IDs => {
+        // //         console.log(IDs);
+        // //         return getRecipe(IDs[2]);
+        // //     })
+        // //     .then(recipe => {
+        // //         console.log(recipe);
+        // //         return getRelated('Jonas');
+        // //     })
+        // //     .then(recipe => {
+        // //         console.log(recipe);
+        // //     })
+        // //     .catch(error => {
+        // //         console.log(error);
+        // //     });
 
-            const related = await getRelated('Jonas');
-            console.log(related);
+        // async function getRecipiesAW() 
+        // {
+        //     const IDs = await getIDs;
+        //     console.log(IDs);
 
-            return recipe;
+        //     const recipe = await getRecipe(IDs[2]);
+        //     console.log(recipe);
+
+        //     const related = await getRelated('Jonas');
+        //     console.log(related);
+
+        //     return recipe;
+        // }
+
+        // getRecipiesAW().then(result => console.log(`${result} is the best ever`));
+
+        // AJAX Calls with FETCH and Promises
+
+        function getWeather(woeid) {
+            // Fetch returns a promise
+            fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${woeid}/`)
+            .then(result => {
+                return result.json();
+            })
+            .then(data => {
+                // console.log(data);
+                const today = data.consolidated_weather[0];
+                console.log(`Temperature in ${data.title} stay between ${today.min_temp} and ${today.max_temp}`);
+            })
+            .catch(error => console.log(error));
         }
 
-        getRecipiesAW().then(result => console.log(`${result} is the best ever`));
+        getWeather(2487956);
+        getWeather(44418);
+
+
 
     </script>
 </body>
