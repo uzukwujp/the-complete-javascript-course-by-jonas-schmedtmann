@@ -45,6 +45,7 @@ elements.searchForm.addEventListener('submit', e => {
     controlSearch();
 });
 
+
 elements.searchResPages.addEventListener('click', e => {
     const btn = e.target.closest('.btn-inline');
     if (btn) {
@@ -65,10 +66,10 @@ const controlRecipe = async () => {
 
         // Create new recipe object
         state.recipe = new Recipe(id);
-
         try {
             // Get recipe data
             await state.recipe.getRecipe();
+            state.recipe.parseIngredients();
 
             // Calculate servings and time
             state.recipe.calcTime();
