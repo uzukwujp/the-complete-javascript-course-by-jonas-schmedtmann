@@ -50,7 +50,31 @@ elements.searchResPages.addEventListener('click', e => {
 });
 
 /* RECIPE CONTROLLER */
+const controlRecipe = async () => {
+    const id = window.location.hash.replace('#', '');
+    console.log(id);
 
-const r = new Recipe(46956);
-r.getRecipe();
-console.log(r);
+    if (id) {
+
+        // Prepare UI for changes
+
+        // Create new recipe object
+        state.recipe = new Recipe(id);
+
+        try {
+            // Get recipe data
+            await state.recipe.getRecipe();
+
+            // Calculate servings and time
+            state.recipe.calcTime();
+            state.recipe.calcServings();
+
+            // Render Recipe
+            console.log(state.recipe);
+        } catch (error) {
+            alert('Error processing data');
+        }
+    }
+};
+
+['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
