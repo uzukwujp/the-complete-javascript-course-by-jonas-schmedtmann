@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { key, key2 } from '../config';
+import { key, key2, key3 } from '../config';
 
 export default class Recipe {
     constructor(id)
@@ -9,7 +9,8 @@ export default class Recipe {
 
     async getRecipe() {
         try {
-            const res = await axios(`https://www.food2fork.com/api/get?key=${key2}&rId=${this.id}`);
+            const res = await axios(`https://www.food2fork.com/api/get?key=${key}&rId=${this.id}`);
+            // console.log("Rec " + res.data.recipe.image_url);
             this.title = res.data.recipe.title;
             this.author = res.data.recipe.publisher;
             this.img = res.data.recipe.image_url;
@@ -17,7 +18,7 @@ export default class Recipe {
             this.ingredients = res.data.recipe.ingredients;
         } catch (error) {
             console.log(error);
-            alert('Something went wrong');
+            console.log('Something went wrong');
         }
     }
 
