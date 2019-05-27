@@ -5,6 +5,7 @@ import Like from './models/Likes';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as listView from './views/listView';
+import * as likesView from './views/likesView';
 
 import { elements, renderLoader, clearLoader } from './views/base';
 import Likes from './models/Likes';
@@ -94,7 +95,10 @@ const controlRecipe = async () => {
     
             // Render recipe
             clearLoader();
-            recipeView.renderRecipe(state.recipe);
+            recipeView.renderRecipe(
+                state.recipe,
+                state.likes.isLiked(id)
+            );
 
         } catch (err) {
             console.log(err);
@@ -108,6 +112,10 @@ const controlRecipe = async () => {
 /*
 * LIST CONTROLLER
 */ 
+
+//Testing
+state.likes = new Likes();
+likesView.toggleLikesMenu(state.likes.getNumLikes());
 
 const controlList = () => {
     if (!state.list) state.list = new List();
@@ -155,19 +163,21 @@ const controlLike = () => {
         );
 
         // Toggle the like button
-        
+        likesView.toggleLikesBtn(true);
         // Add like to UI list
-        console.log(state.likes);
+        likesView.renderLike(newLike);
 
     } else {
 
         // Remove like from the state
         state.likes.deleteLike(currentID)
         // Toggle the like button
-
+        likesView.toggleLikesBtn(false);
         // Remove like from UI list
-        console.log(state.likes);
+        likesView.deleteLike(currentID);
     }
+
+    likesView.toggleLikesMenu(state.likes.getNumLikes());
 }
 
 

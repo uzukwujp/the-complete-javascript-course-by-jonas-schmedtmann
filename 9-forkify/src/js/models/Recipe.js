@@ -9,7 +9,7 @@ export default class Recipe {
 
     async getRecipe() {
         try {
-            const res = await axios(`https://www.food2fork.com/api/get?key=${key5}&rId=${this.id}`);
+            const res = await axios(`https://www.food2fork.com/api/get?key=${key}&rId=${this.id}`);
             // console.log("Rec " + res.data.recipe.image_url);
             this.title = res.data.recipe.title;
             this.author = res.data.recipe.publisher;
