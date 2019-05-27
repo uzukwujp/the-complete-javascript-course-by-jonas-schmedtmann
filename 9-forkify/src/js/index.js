@@ -113,9 +113,6 @@ const controlRecipe = async () => {
 * LIST CONTROLLER
 */ 
 
-//Testing
-state.likes = new Likes();
-likesView.toggleLikesMenu(state.likes.getNumLikes());
 
 const controlList = () => {
     if (!state.list) state.list = new List();
@@ -180,6 +177,16 @@ const controlLike = () => {
     likesView.toggleLikesMenu(state.likes.getNumLikes());
 }
 
+//Restore like recipes on page load
+window.addEventListener('load', () => {
+    state.likes = new Likes();
+
+    state.likes.readStorage();
+    
+    likesView.toggleLikesMenu(state.likes.getNumLikes());
+
+    state.likes.likes.forEach(like => likesView.renderLike(like));
+});
 
 // Handling recipe button clicks
 elements.recipe.addEventListener('click', e => {
