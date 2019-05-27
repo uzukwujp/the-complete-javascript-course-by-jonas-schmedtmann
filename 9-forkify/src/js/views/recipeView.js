@@ -73,6 +73,11 @@ const createIngredient = ingredient => `
                     </button>
                 </div>
             </div>
+            <button class="recipe__love">
+            <svg class="header__likes">
+                <use href="img/icons.svg#icon-heart-outlined"></use>
+            </svg>
+        </button>
         </div>
         <div class="recipe__ingredients">
             <ul class="recipe__ingredient-list">
